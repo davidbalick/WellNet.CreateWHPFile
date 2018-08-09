@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WellNet.CreateWHPFile</RootNamespace>
     <AssemblyName>WellNet.CreateWHPFile</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,6 +96,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WellNet.Excel\WellNet.Excel.csproj">
+      <Project>{5101edf2-f6fe-4084-add7-d4643c8a3908}</Project>
+      <Name>WellNet.Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WellNet.Sql\WellNet.Sql.csproj">
+      <Project>{d83a481b-cc6c-44fa-b395-147b0e9d9f20}</Project>
+      <Name>WellNet.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WellNet.Utils\WellNet.Utils.csproj">
+      <Project>{6778ab4f-a69c-4098-8b20-71d41e289a47}</Project>
+      <Name>WellNet.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
