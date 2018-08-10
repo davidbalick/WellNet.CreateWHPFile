@@ -12,6 +12,8 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -19,7 +21,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <TextBlock Text="Groups:" Margin="6"/>
-            <ComboBox ItemsSource="{Binding Groups}" DisplayMemberPath="Name" Grid.Column="1" Margin="6"/>
+            <ComboBox ItemsSource="{Binding Groups}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedGroup}" Grid.Column="1" Margin="6"/>
         </Grid>
         <Grid Grid.Row="1" Margin="6">
             <Grid.ColumnDefinitions>
@@ -33,8 +35,8 @@
                 <TextBlock Text="Term Date Look Back Days:" Margin="6"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="1">
-                <TextBox Text="{Binding DateOfInterest}" Margin="6"/>
-                <TextBox Text="{Binding HistoryDate}" Margin="6"/>
+                <TextBox Text="{Binding DateOfInterest, StringFormat=yyyy-MM-dd}" Margin="6"/>
+                <TextBox Text="{Binding HistoryDate, StringFormat=yyyy-MM-dd}" Margin="6"/>
                 <TextBox Text="{Binding EffectiveDateLookAheadDays}" Margin="6"/>
                 <TextBox Text="{Binding TermDateLookBackDays}" Margin="6"/>
             </StackPanel>
@@ -45,20 +47,34 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Vertical" Grid.Column="0">
-                <TextBlock Text="Excel File Name:" Margin="6"/>
-                <TextBlock Text="Text File Name:" Margin="6"/>
+                <TextBlock Name="TbExcelFilename" Text="Excel File Name:" Margin="6" AllowDrop="True"/>
+                <TextBlock Name="TbTextFilename" Text="Text File Name:" Margin="6" AllowDrop="True"/>
+                <TextBlock Name="TbScriptFilename" Text="Script File Name:" Margin="6" AllowDrop="True"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="1">
                 <TextBox Text="{Binding ExcelFilename}" Margin="6"/>
                 <TextBox Text="{Binding TextFilename}" Margin="6"/>
+                <TextBox Text="{Binding ScriptFilename}" Margin="6"/>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="3" Margin="6">
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Connection:" Margin="6" Grid.Column="0"/>
+            <ComboBox ItemsSource="{Binding Connections}" DisplayMemberPath="Key" SelectedValuePath="Value" SelectedValue="{Binding Connection}" Margin="6" Grid.Column="1"/>
+            <TextBlock Text="Table:" Margin="6" Grid.Column="2"/>
+            <TextBox Text="{Binding Table}" Margin="6" Grid.Column="3"/>
+        </Grid>
+        <Grid Grid.Row="5" Margin="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Status}" Grid.Column="0"/>
+            <TextBlock Text="{Binding Status}" Grid.Column="0" Margin="6"/>
             <Button Content="Create" Command="{Binding CreateFilesCommand}" Margin="6" Grid.Column="1"/>
         </Grid>
     </Grid>
